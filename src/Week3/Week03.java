@@ -1,8 +1,13 @@
 package Week3;
+import helpers.*;
 
 public class Week03 
 {
     public static final String CONSOLE_CLEAR = "\033[H\033[2J";
+    
+    private static Student derek;
+    private static Course myCourse;
+
     public static void main(String[] args)
     {
         System.out.println(CONSOLE_CLEAR);
@@ -15,6 +20,56 @@ public class Week03
         System.out.println();
         System.out.println(" by Nicholas Day and Derek Peacock");
         System.out.println();
+
+        createStudent();
+        createCourse();
+        enrolStudent();
     }     
     
+    /**
+     * Add the course object to the student object
+     */
+    public static void enrolStudent()
+    {
+        derek.enrol(myCourse);
+        derek.print();
+    }
+
+    public static void createCourse()
+    {
+        String code = null;
+        String title = null;
+
+        code = InputReader.getString("Please enter your course code > ");
+        title = InputReader.getString("Please enter your course title > ");
+
+        myCourse = new Course(code, title);
+    }
+
+    /**
+     * This method will create an instance of the Student
+     * class and initialise the attributes/variables
+     */
+    private static void createStudent() 
+    {
+        String name = null;
+
+        System.out.println();
+        String id = InputReader.getString("Please enter your id > ");
+        
+        boolean isValid = false;
+        while(!isValid)
+        {
+            name = InputReader.getString("Please enter your name > ");
+            String answer = InputReader.getString(name + " is this name correct > ");
+
+            if(answer.contains("yes"))
+            {
+                isValid = true;
+            }
+        }
+        
+        derek = new Student(id, name);
+        derek.print();
+    }     
 }
