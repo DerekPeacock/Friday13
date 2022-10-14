@@ -3,12 +3,12 @@ import helpers.*;
 
 public class Week03 
 {
-    public static final String CONSOLE_CLEAR = "\033[H\033[2J";
+    public final String CONSOLE_CLEAR = "\033[H\033[2J";
     
-    private static Student derek;
-    private static Course myCourse;
+    private Student derek;
+    private Course myCourse;
 
-    public static void main(String[] args)
+    public void run()
     {
         System.out.println(CONSOLE_CLEAR);
 
@@ -21,22 +21,53 @@ public class Week03
         System.out.println(" by Nicholas Day and Derek Peacock");
         System.out.println();
 
-        createStudent();
-        createCourse();
-        enrolStudent();
+        executeMenu();
     }     
     
+    public void executeMenu()
+    {
+        boolean wantsToQuit = false;
+        
+        while(!wantsToQuit)
+        {
+            displayMenu();
+            int choice = InputReader.getInt(" Please enter your choice > ");
+
+            switch(choice)
+            {
+                case 1: createStudent(); break;
+                case 2: createCourse(); break;
+                case 3: enrolStudent(); break;
+                case 4: derek.print();break;
+                case 5: wantsToQuit = true; break;
+                default: System.out.println("\nNot valid!!!\n");
+            }
+        }
+    }
+
+    public void displayMenu()
+    {
+        System.out.println("\n    1. Create Student");
+        System.out.println("    2. Create Course");
+        System.out.println("    3. Enrol Student");
+        System.out.println("    4. Print Student");
+        System.out.println("    5. Quit\n");
+    }
     /**
      * Add the course object to the student object
      */
-    public static void enrolStudent()
+    public void enrolStudent()
     {
+        System.out.println("\n Enrol Student\n");
+
         derek.enrol(myCourse);
         derek.print();
     }
 
-    public static void createCourse()
+    public void createCourse()
     {
+        System.out.println("\n Create Course\n");
+
         String code = null;
         String title = null;
 
@@ -50,8 +81,10 @@ public class Week03
      * This method will create an instance of the Student
      * class and initialise the attributes/variables
      */
-    private static void createStudent() 
+    private void createStudent() 
     {
+        System.out.println("\n Create Student\n");
+        
         String name = null;
 
         System.out.println();
