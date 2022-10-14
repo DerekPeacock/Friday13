@@ -39,7 +39,8 @@ public class Week03
                 case 2: createCourse(); break;
                 case 3: enrolStudent(); break;
                 case 4: derek.print();break;
-                case 5: wantsToQuit = true; break;
+                case 5: myCourse.print();break;
+                case 6: wantsToQuit = true; break;
                 default: System.out.println("\nNot valid!!!\n");
             }
         }
@@ -51,7 +52,8 @@ public class Week03
         System.out.println("    2. Create Course");
         System.out.println("    3. Enrol Student");
         System.out.println("    4. Print Student");
-        System.out.println("    5. Quit\n");
+        System.out.println("    5. Print Course");        
+        System.out.println("    6. Quit\n");
     }
     /**
      * Add the course object to the student object
