@@ -6,7 +6,7 @@ import Week3.Course;
 
 public class MusicList 
 {
-    private static ArrayList songs = new ArrayList<>();
+    private static ArrayList<Course> songs = new ArrayList<>();
 
     public static void main(String[] args) throws Exception 
     {
@@ -52,7 +52,12 @@ public class MusicList
     private static void printTopSongs() {
     }
 
-    private static void printAllSongs() {
+    private static void printAllSongs() 
+    {
+        for(Course course : songs)
+        {
+            course.print();
+        }
     }
 
     private static void removeSong() {
